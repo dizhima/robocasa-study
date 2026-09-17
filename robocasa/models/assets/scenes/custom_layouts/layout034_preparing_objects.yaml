@@ -1,0 +1,92 @@
+objects:
+- type: object
+  name: cake_1
+  obj_groups: robocasa/models/assets/objects/objaverse/cake/cake_6/model.xml
+  object_scale: 1.5
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.083
+    - -0.787
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_island_group_1
+      loc: left_right
+- type: object
+  name: cheese_1
+  obj_groups: robocasa/models/assets/objects/objaverse/cheese/cheese_1/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.0
+    - -0.3
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_island_group_1
+      loc: left_right
+- type: object
+  name: apple_1
+  obj_groups: robocasa/models/assets/objects/objaverse/apple/apple_2/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.621
+    - 0.708
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_island_group_1
+      loc: left_right
+- type: object
+  name: milk_1
+  obj_groups: robocasa/models/assets/objects/objaverse/milk/milk_3/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.774
+    - -0.624
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_island_group_1
+      loc: left_right
+- type: object
+  name: juice_1
+  obj_groups: robocasa/models/assets/objects/lightwheel/juice/Juice007/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.709
+    - -0.744
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_island_group_1
+      loc: left_right

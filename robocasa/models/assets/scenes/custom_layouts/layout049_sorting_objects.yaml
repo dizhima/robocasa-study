@@ -1,0 +1,154 @@
+objects:
+- type: object
+  name: mug_1
+  obj_groups: robocasa/models/assets/objects/objaverse/mug/mug_3/model.xml
+  graspable: true
+  placement:
+    fixture: counter_5_front_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.514
+    - 0.613
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: mug_2
+  obj_groups: robocasa/models/assets/objects/objaverse/mug/mug_3/model.xml
+  graspable: true
+  placement:
+    fixture: counter_5_front_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.411
+    - 0.53
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: apple_1
+  obj_groups: robocasa/models/assets/objects/objaverse/apple/apple_2/model.xml
+  graspable: true
+  placement:
+    fixture: counter_3_front_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.736
+    - -0.774
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: apple_2
+  obj_groups: robocasa/models/assets/objects/objaverse/apple/apple_2/model.xml
+  graspable: true
+  placement:
+    fixture: counter_3_front_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.446
+    - -0.668
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: lemon_1
+  obj_groups: robocasa/models/assets/objects/objaverse/lemon/lemon_0/model.xml
+  graspable: true
+  placement:
+    fixture: counter_3_front_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.107
+    - -0.626
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: cup_1
+  obj_groups: robocasa/models/assets/objects/objaverse/cup/cup_4/model.xml
+  graspable: true
+  placement:
+    fixture: dining_dining_area_group
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.521
+    - 0.75
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: canned_food_1
+  obj_groups: robocasa/models/assets/objects/objaverse/canned_food/canned_food_0/model.xml
+  graspable: true
+  placement:
+    fixture: dining_dining_area_group
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.333
+    - -0.702
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: condiment_bottle_1
+  obj_groups: robocasa/models/assets/objects/objaverse/condiment/condiment_0/model.xml
+  graspable: true
+  placement:
+    fixture: dining_dining_area_group
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.53
+    - 0.602
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: cereal_1
+  obj_groups: robocasa/models/assets/objects/objaverse/cereal/cereal_0/model.xml
+  graspable: true
+  placement:
+    fixture: dining_dining_area_group
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.753
+    - -0.668
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      full_depth_region: true

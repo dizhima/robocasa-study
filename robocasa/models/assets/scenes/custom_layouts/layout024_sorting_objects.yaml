@@ -1,0 +1,145 @@
+objects:
+- type: object
+  name: bowl_1
+  obj_groups: robocasa/models/assets/objects/objaverse/bowl/bowl_1/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.361
+    - -0.655
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_1_island_group_1
+      loc: left_right
+- type: object
+  name: bowl_2
+  obj_groups: robocasa/models/assets/objects/objaverse/bowl/bowl_1/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.566
+    - -0.768
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_1_island_group_1
+      loc: left_right
+- type: object
+  name: cup_1
+  obj_groups: robocasa/models/assets/objects/objaverse/cup/cup_4/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.563
+    - 0.785
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_1_island_group_1
+      loc: left_right
+- type: object
+  name: cup_2
+  obj_groups: robocasa/models/assets/objects/objaverse/cup/cup_4/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.095
+    - 0.725
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_1_island_group_1
+      loc: left_right
+- type: object
+  name: fork_1
+  obj_groups: robocasa/models/assets/objects/objaverse/fork/fork_1/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.842
+    - 0.811
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_1_island_group_1
+      loc: left_right
+- type: object
+  name: fork_2
+  obj_groups: robocasa/models/assets/objects/objaverse/fork/fork_1/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.805
+    - -0.719
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_1_island_group_1
+      loc: left_right
+- type: object
+  name: spoon_1
+  obj_groups: robocasa/models/assets/objects/objaverse/spoon/spoon_11/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.065
+    - -0.654
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_1_island_group_1
+      loc: left_right
+- type: object
+  name: spoon_2
+  obj_groups: robocasa/models/assets/objects/objaverse/spoon/spoon_11/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.39
+    - 0.837
+    rotation:
+    - 0.0
+    - 0.0
+    sample_region_kwargs:
+      ref: sink_1_island_group_1
+      loc: left_right

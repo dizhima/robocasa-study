@@ -1,0 +1,52 @@
+objects:
+  # Fruit cluster on the island counter.
+  - type: object
+    name: apple_1
+    obj_groups: apple
+    graspable: true
+    placement:
+      fixture: island_island_group
+      size: [0.25, 0.25]
+      pos: [-0.65, 0.35]
+      rotation: [-3.14, 3.14]
+
+  - type: object
+    name: banana_1
+    obj_groups: banana
+    graspable: true
+    placement:
+      fixture: island_island_group
+      size: [0.30, 0.25]
+      pos: [-0.30, 0.35]
+      rotation: [-3.14, 3.14]
+
+  - type: object
+    name: orange_1
+    obj_groups: orange
+    graspable: true
+    placement:
+      fixture: island_island_group
+      size: [0.25, 0.25]
+      pos: [0.05, 0.35]
+      rotation: [-3.14, 3.14]
+
+  # Drinkware spread toward the open side of the island.
+  - type: object
+    name: mug_1
+    obj_groups: mug
+    graspable: true
+    placement:
+      fixture: island_island_group
+      size: [0.25, 0.25]
+      pos: [0.40, 0.30]
+      rotation: [-3.14, 3.14]
+
+  - type: object
+    name: cup_1
+    obj_groups: cup
+    graspable: true
+    placement:
+      fixture: island_island_group
+      size: [0.25, 0.25]
+      pos: [0.70, 0.30]
+      rotation: [-3.14, 3.14]

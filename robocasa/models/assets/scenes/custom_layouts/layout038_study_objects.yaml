@@ -1,0 +1,154 @@
+objects:
+- type: object
+  name: mug_1
+  obj_groups: robocasa/models/assets/objects/objaverse/mug/mug_12/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.367
+    - -0.692
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: mug_2
+  obj_groups: robocasa/models/assets/objects/objaverse/mug/mug_12/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.145
+    - -0.751
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: glass_cup_1
+  obj_groups: robocasa/models/assets/objects/lightwheel/glass_cup/GlassCup002/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.572
+    - 0.665
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: carrot_1
+  obj_groups: robocasa/models/assets/objects/objaverse/carrot/carrot_0/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.372
+    - 0.735
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: carrot_2
+  obj_groups: robocasa/models/assets/objects/objaverse/carrot/carrot_0/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.069
+    - 0.76
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: tomato_1
+  obj_groups: robocasa/models/assets/objects/objaverse/tomato/tomato_0/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.61
+    - -0.675
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: canned_food_1
+  obj_groups: robocasa/models/assets/objects/objaverse/canned_food/canned_food_4/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.657
+    - 0.718
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: condiment_bottle_1
+  obj_groups: robocasa/models/assets/objects/objaverse/condiment/condiment_3/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.306
+    - 0.779
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true
+- type: object
+  name: cereal_1
+  obj_groups: robocasa/models/assets/objects/objaverse/cereal/cereal_6/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.129
+    - -0.826
+    rotation:
+    - -3.14
+    - 3.14
+    sample_region_kwargs:
+      full_depth_region: true

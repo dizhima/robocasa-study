@@ -1,0 +1,76 @@
+objects:
+- type: object
+  name: mug_1
+  obj_groups: mug
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.33
+    - 0.663
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: mug_2
+  obj_groups: mug
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.403
+    - -0.745
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: mug_3
+  obj_groups: mug
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.478
+    - 0.76
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: orange_1
+  obj_groups: orange
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.077
+    - 0.825
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: banana_1
+  obj_groups: banana
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.3
+    - 0.25
+    pos:
+    - 0.538
+    - -0.74
+    rotation:
+    - -3.14
+    - 3.14

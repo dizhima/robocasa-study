@@ -1,0 +1,91 @@
+objects:
+- type: object
+  name: apple_1
+  obj_groups: robocasa/models/assets/objects/objaverse/apple/apple_0/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.195
+    - -0.784
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: apple_2
+  obj_groups: robocasa/models/assets/objects/objaverse/apple/apple_0/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.638
+    - -0.623
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: mug_1
+  obj_groups: robocasa/models/assets/objects/objaverse/mug/mug_1/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.238
+    - 0.663
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: mug_2
+  obj_groups: robocasa/models/assets/objects/objaverse/mug/mug_2/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.478
+    - 0.76
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: condiment_bottle_1
+  obj_groups: robocasa/models/assets/objects/objaverse/condiment/condiment_0/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - -0.077
+    - 0.825
+    rotation:
+    - -3.14
+    - 3.14
+- type: object
+  name: bowl_1
+  obj_groups: robocasa/models/assets/objects/objaverse/bowl/bowl_1/model.xml
+  graspable: true
+  placement:
+    fixture: island_island_group_1
+    size:
+    - 0.25
+    - 0.25
+    pos:
+    - 0.519
+    - 0.716
+    rotation:
+    - -3.14
+    - 3.14
