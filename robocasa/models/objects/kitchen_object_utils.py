@@ -369,7 +369,11 @@ def sample_kitchen_object_helper(
             for reg in obj_registries:
                 if (
                     reg in OBJ_CATEGORIES[cand_cat]
-                    and model_xml_path in OBJ_CATEGORIES[cand_cat][reg].mjcf_paths
+                    and any(
+                        os.path.normcase(os.path.normpath(model_xml_path))
+                        == os.path.normcase(os.path.normpath(candidate_path))
+                        for candidate_path in OBJ_CATEGORIES[cand_cat][reg].mjcf_paths
+                    )
                 ):
                     mjcf_kwargs = OBJ_CATEGORIES[cand_cat][reg].get_mjcf_kwargs()
                     cat = cand_cat

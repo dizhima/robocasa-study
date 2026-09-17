@@ -1235,7 +1235,7 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
         textures = asset.findall("texture")
         all_elements = meshes + textures
 
-        robocasa_path_split = os.path.split(robocasa.__file__)[0].split("/")
+        robocasa_path_split = os.path.split(robocasa.__file__)[0].replace("\\", "/").split("/")
 
         # replace robocasa-specific asset paths
         for elem in all_elements:
@@ -1243,31 +1243,43 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
             if old_path is None:
                 continue
 
-            old_path_split = old_path.split("/")
+            normalized_old_path = old_path.replace("\\", "/")
+            old_path_split = normalized_old_path.split("/")
             # maybe replace all paths to robosuite assets
             if (
-                ("models/assets/fixtures" in old_path)
-                or ("models/assets/textures" in old_path)
-                or ("models/assets/objects" in old_path)
-                or ("models/assets/generative_textures" in old_path)
+                ("models/assets/fixtures" in normalized_old_path)
+                or ("models/assets/textures" in normalized_old_path)
+                or ("models/assets/objects" in normalized_old_path)
+                or ("models/assets/generative_textures" in normalized_old_path)
             ):
-                if "/robosuite/" in old_path:
+                if "/robosuite/" in normalized_old_path:
                     check_lst = [
                         loc
                         for loc, val in enumerate(old_path_split)
                         if val == "robosuite"
                     ]
-                elif "/robocasa/" in old_path:
+                    ind = max(check_lst)  # last occurrence index
+                    path_suffix = old_path_split[ind + 1 :]
+                elif "/robocasa/" in normalized_old_path:
                     check_lst = [
                         loc
                         for loc, val in enumerate(old_path_split)
                         if val == "robocasa"
                     ]
+                    ind = max(check_lst)  # last occurrence index
+                    path_suffix = old_path_split[ind + 1 :]
                 else:
-                    raise ValueError
+                    check_lst = [
+                        loc
+                        for loc, val in enumerate(old_path_split)
+                        if val == "models"
+                    ]
+                    if not check_lst:
+                        raise ValueError
+                    ind = max(check_lst)
+                    path_suffix = old_path_split[ind:]
 
-                ind = max(check_lst)  # last occurrence index
-                new_path_split = robocasa_path_split + old_path_split[ind + 1 :]
+                new_path_split = robocasa_path_split + path_suffix
 
                 new_path = "/".join(new_path_split)
                 elem.set("file", new_path)
