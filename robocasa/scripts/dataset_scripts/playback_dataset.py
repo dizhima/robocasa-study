@@ -32,6 +32,7 @@ def playback_trajectory_with_env(
     verbose=False,
     camera_height=512,
     camera_width=512,
+    skip_pre_reset=False,
 ):
     """
     Helper function to playback a single trajectory using the simulator environment.
@@ -67,7 +68,7 @@ def playback_trajectory_with_env(
         if lang:
             print(colored(f"Instruction: {lang}", "green"))
         print(colored("Spawning environment...", "yellow"))
-    reset_to(env, initial_state)
+    reset_to(env, initial_state, skip_pre_reset=skip_pre_reset)
 
     traj_len = states.shape[0]
     action_playback = actions is not None
@@ -101,7 +102,7 @@ def playback_trajectory_with_env(
                             )
                         )
         else:
-            reset_to(env, {"states": states[t]})
+            reset_to(env, {"states": states[t]}, skip_pre_reset=skip_pre_reset)
 
         # on-screen render
         if render:
@@ -162,7 +163,7 @@ class ObservationKeyToModalityDict(dict):
         return super(ObservationKeyToModalityDict, self).__getitem__(item)
 
 
-def reset_to(env, state):
+def reset_to(env, state, skip_pre_reset=False):
     """
     Reset to a specific simulator state.
 
@@ -186,10 +187,11 @@ def reset_to(env, state):
             env.set_attrs_from_ep_meta(ep_meta)
         elif hasattr(env, "set_ep_meta"):  # newer versions
             env.set_ep_meta(ep_meta)
-        # this reset is necessary.
-        # while the call to env.reset_from_xml_string does call reset,
-        # that is only a "soft" reset that doesn't actually reload the model.
-        env.reset()
+        if not skip_pre_reset:
+            # this reset is necessary for fully syncing RoboCasa task internals before
+            # restoring the recorded XML. It can be skipped for recorded-state-only
+            # visual playback when local object sampling fails before XML restore.
+            env.reset()
         robosuite_version_id = int(robosuite.__version__.split(".")[1])
         if robosuite_version_id <= 3:
             from robosuite.utils.mjcf_utils import postprocess_model_xml
@@ -199,8 +201,27 @@ def reset_to(env, state):
             # v1.4 and above use the class-based edit_model_xml function
             xml = env.edit_model_xml(state["model"])
 
-        env.reset_from_xml_string(xml)
-        env.sim.reset()
+        if skip_pre_reset:
+            env.close()
+            env.deterministic_reset = True
+            env._initialize_sim(xml_string=xml)
+            env.deterministic_reset = False
+            env.initialize_renderer()
+            if env.has_offscreen_renderer:
+                if env.sim._render_context_offscreen is None:
+                    from robosuite.utils.binding_utils import MjRenderContextOffscreen
+
+                    MjRenderContextOffscreen(env.sim, device_id=env.render_gpu_device_id)
+                env.sim._render_context_offscreen.vopt.geomgroup[0] = (
+                    1 if env.render_collision_mesh else 0
+                )
+                env.sim._render_context_offscreen.vopt.geomgroup[1] = (
+                    1 if env.render_visual_mesh else 0
+                )
+            env.sim.reset()
+        else:
+            env.reset_from_xml_string(xml)
+            env.sim.reset()
         # hide teleop visualization after restoring from model
         # env.sim.model.site_rgba[env.eef_site_id] = np.array([0., 0., 0., 0.])
         # env.sim.model.site_rgba[env.eef_cylinder_id] = np.array([0., 0., 0., 0.])
@@ -208,6 +229,9 @@ def reset_to(env, state):
         env.sim.set_state_from_flattened(state["states"])
         env.sim.forward()
         should_ret = True
+
+    if skip_pre_reset:
+        return None
 
     # update state as needed
     if hasattr(env, "update_sites"):
@@ -230,6 +254,7 @@ def playback_dataset(
     use_obs,
     filter_key,
     n,
+    episode_index,
     render,
     render_image_names,
     camera_height,
@@ -239,6 +264,7 @@ def playback_dataset(
     extend_states,
     first,
     verbose,
+    skip_pre_reset=False,
 ):
     dataset = Path(dataset)
     # some arg checking
@@ -302,17 +328,25 @@ def playback_dataset(
 
     assert filter_key is None, "filter_key not supported for lerobot dataset format"
     demos = LU.get_episodes(dataset)
+    episode_indices = list(range(len(demos)))
+
+    if episode_index is not None:
+        if episode_index < 0 or episode_index >= len(demos):
+            raise IndexError(
+                f"episode-index {episode_index} is out of range for {len(demos)} episodes"
+            )
+        episode_indices = [episode_index]
 
     # maybe reduce the number of demonstrations to playback
     if n is not None:
-        demos = demos[:n]
+        episode_indices = episode_indices[:n]
 
     # maybe dump video
     video_writer = None
     if write_video:
         video_writer = imageio.get_writer(video_path, fps=20)
 
-    for ind in range(len(demos)):
+    for ind in episode_indices:
         ep = demos[ind]
         print(colored("\nPlaying back episode: {}".format(ep.stem), "yellow"))
 
@@ -346,6 +380,7 @@ def playback_dataset(
             verbose=verbose,
             camera_height=camera_height,
             camera_width=camera_width,
+            skip_pre_reset=skip_pre_reset,
         )
 
     if write_video:
@@ -378,6 +413,12 @@ def get_playback_args():
         type=int,
         default=None,
         help="(optional) stop after n trajectories are played",
+    )
+    parser.add_argument(
+        "--episode-index",
+        type=int,
+        default=None,
+        help="(optional) play only this zero-based episode index, e.g. 5 for episode_000005",
     )
 
     # Use image observations instead of doing playback using the simulator env.
@@ -458,6 +499,15 @@ def get_playback_args():
     )
 
     parser.add_argument(
+        "--skip-pre-reset",
+        action="store_true",
+        help=(
+            "skip the env.reset() that normally runs before loading each recorded XML; "
+            "useful for recorded-state visual playback when local object sampling fails"
+        ),
+    )
+
+    parser.add_argument(
         "--camera_height",
         type=int,
         default=512,
@@ -494,6 +544,7 @@ if __name__ == "__main__":
                 use_obs=args.use_obs,
                 filter_key=args.filter_key,
                 n=args.n,
+                episode_index=args.episode_index,
                 render=args.render,
                 render_image_names=args.render_image_names,
                 camera_height=args.camera_height,
@@ -503,6 +554,7 @@ if __name__ == "__main__":
                 extend_states=args.extend_states,
                 first=args.first,
                 verbose=args.verbose,
+                skip_pre_reset=args.skip_pre_reset,
             )
         except KeyboardInterrupt:
             print(colored(f"Exiting Playback Early.", "yellow"))

@@ -67,7 +67,13 @@ def download_url(url, download_dir, fname=None, check_overwrite=True):
 
 
 def download_datasets(
-    split, tasks, source, all_data=False, overwrite=False, dryrun=False
+    split,
+    tasks,
+    source,
+    all_data=False,
+    overwrite=False,
+    dryrun=False,
+    task_type="all",
 ):
 
     if all_data:
@@ -76,7 +82,14 @@ def download_datasets(
         split = ["pretrain", "target"]
 
     if tasks is None:
-        tasks = list(ATOMIC_TASK_DATASETS.keys()) + list(COMPOSITE_TASK_DATASETS.keys())
+        if task_type == "atomic":
+            tasks = list(ATOMIC_TASK_DATASETS.keys())
+        elif task_type == "composite":
+            tasks = list(COMPOSITE_TASK_DATASETS.keys())
+        else:
+            tasks = list(ATOMIC_TASK_DATASETS.keys()) + list(
+                COMPOSITE_TASK_DATASETS.keys()
+            )
 
     for task_name in tasks:
         for sp in split:
@@ -126,7 +139,7 @@ def download_and_extract_from_box(destination):
         base_datasets_path = Path(robocasa_path).parent / "datasets" / "v1.0"
     relative_path = ds_path.relative_to(base_datasets_path)
     # box_links_ds.json keys look like: pretrain/atomic/TaskName/20250820/lerobot.tar
-    tar_key = str(relative_path.parent / f"{relative_path.name}.tar")
+    tar_key = (relative_path.parent / f"{relative_path.name}.tar").as_posix()
 
     if tar_key not in BOX_LINKS_DS:
         print(colored(f"No Box link found for '{tar_key}' - skipping.", "red"))
@@ -189,6 +202,14 @@ if __name__ == "__main__":
         help="Tasks to download datasets for. Defaults to all tasks",
     )
     parser.add_argument(
+        "--task-type",
+        type=str,
+        default="all",
+        choices=["atomic", "composite", "all"],
+        help="Task category to download when --tasks is not set. "
+        "Choose among atomic, composite, all",
+    )
+    parser.add_argument(
         "--source",
         type=str,
         nargs="+",
@@ -234,4 +255,5 @@ if __name__ == "__main__":
         source=args.source,
         overwrite=args.overwrite,
         dryrun=args.dryrun,
+        task_type=args.task_type,
     )
