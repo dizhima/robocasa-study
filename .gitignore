@@ -171,3 +171,9 @@ robocasa/scripts/taskgen/task_prompting/outputs/
 
 # Local isolated development worktrees
 .worktrees/
+
+# Project-local scene export outputs (large generated asset bundles)
+/exported_scenes*/
+
+# Accidental nested package copy created during local scene work
+/robocasa/robocasa/
