@@ -1,8 +1,12 @@
 import argparse
 import json
 import sys
-import termios
 from collections import OrderedDict
+
+try:
+    import termios
+except ImportError:
+    termios = None
 
 import numpy as np
 import robosuite
@@ -209,7 +213,8 @@ if __name__ == "__main__":
 
         # Flush stdin to clear any buffered keypresses otherwise when getting
         # the next layout/style choice, it will read a 'q' from before
-        termios.tcflush(sys.stdin, termios.TCIFLUSH)
+        if termios is not None:
+            termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
         print()
         print()
